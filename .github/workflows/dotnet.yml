@@ -55,8 +55,8 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: Deploy container
         run: 
-          az group create --name mon-resource-group-michacham --location northeurope
-          az container create --resource-group mon-resource-group-michacham --name fibonacci-michacham --dns-name-label fibonacci-michacham --image docker.io/michacham/fibonacci:${{ needs.tags.outputs.new_version }} --ports 8080
+          az group create --name resource-group-michacham --location northeurope
+          az container create --resource-group resource-group-michacham --name fibonacci-michacham --dns-name-label fibonacci-michacham --image docker.io/michacham/fibonacci:${{ needs.tags.outputs.new_version }} --ports 8080
   
   build:
     needs: tags
